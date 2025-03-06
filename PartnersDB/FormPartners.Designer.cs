@@ -1,6 +1,6 @@
 ﻿namespace PartnersDB
 {
-    partial class Form1
+    partial class FormPartners
     {
         /// <summary>
         ///  Required designer variable.

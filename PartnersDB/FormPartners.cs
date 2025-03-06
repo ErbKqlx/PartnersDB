@@ -1,8 +1,8 @@
 namespace PartnersDB
 {
-    public partial class Form1 : Form
+    public partial class FormPartners : Form
     {
-        public Form1()
+        public FormPartners()
         {
             InitializeComponent();
         }
