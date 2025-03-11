@@ -32,15 +32,15 @@
             buttonAddPartner = new Button();
             buttonUpdatePartner = new Button();
             buttonDeletePartner = new Button();
-            panel1 = new Panel();
-            label5 = new Label();
+            panel0 = new Panel();
+            percent = new Label();
             rating = new Label();
             phone = new Label();
             nameOfDirector = new Label();
             nameOfPartner = new Label();
             flowLayoutPartners = new FlowLayoutPanel();
             flowLayoutButtons.SuspendLayout();
-            panel1.SuspendLayout();
+            panel0.SuspendLayout();
             flowLayoutPartners.SuspendLayout();
             SuspendLayout();
             // 
@@ -90,29 +90,29 @@
             buttonDeletePartner.Text = "Посмотреть истории реализации продукций партнером";
             buttonDeletePartner.UseVisualStyleBackColor = false;
             // 
-            // panel1
+            // panel0
             // 
-            panel1.BackColor = Color.White;
-            panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(rating);
-            panel1.Controls.Add(phone);
-            panel1.Controls.Add(nameOfDirector);
-            panel1.Controls.Add(nameOfPartner);
-            panel1.Location = new Point(3, 3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(833, 131);
-            panel1.TabIndex = 1;
-            panel1.MouseEnter += Panel_MouseHover;
-            panel1.MouseLeave += Panel_MouseLeave;
+            panel0.BackColor = Color.White;
+            panel0.BorderStyle = BorderStyle.FixedSingle;
+            panel0.Controls.Add(percent);
+            panel0.Controls.Add(rating);
+            panel0.Controls.Add(phone);
+            panel0.Controls.Add(nameOfDirector);
+            panel0.Controls.Add(nameOfPartner);
+            panel0.Location = new Point(3, 3);
+            panel0.Name = "panel0";
+            panel0.Size = new Size(833, 131);
+            panel0.TabIndex = 1;
+            panel0.MouseEnter += Panel_MouseHover;
+            panel0.MouseLeave += Panel_MouseLeave;
             // 
-            // label5
+            // percent
             // 
-            label5.Location = new Point(709, 15);
-            label5.Name = "label5";
-            label5.Size = new Size(49, 28);
-            label5.TabIndex = 4;
-            label5.Text = "10%";
+            percent.Location = new Point(709, 15);
+            percent.Name = "percent";
+            percent.Size = new Size(49, 28);
+            percent.TabIndex = 4;
+            percent.Text = "10%";
             // 
             // rating
             // 
@@ -151,7 +151,7 @@
             // 
             // flowLayoutPartners
             // 
-            flowLayoutPartners.Controls.Add(panel1);
+            flowLayoutPartners.Controls.Add(panel0);
             flowLayoutPartners.Dock = DockStyle.Fill;
             flowLayoutPartners.FlowDirection = FlowDirection.TopDown;
             flowLayoutPartners.Location = new Point(10, 81);
@@ -173,7 +173,7 @@
             Padding = new Padding(10);
             Text = "Партнеры";
             flowLayoutButtons.ResumeLayout(false);
-            panel1.ResumeLayout(false);
+            panel0.ResumeLayout(false);
             flowLayoutPartners.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -184,12 +184,12 @@
         private Button buttonAddPartner;
         private Button buttonUpdatePartner;
         private Button buttonDeletePartner;
-        private Panel panel1;
+        private Panel panel0;
         private Label nameOfPartner;
         private Label rating;
         private Label phone;
         private Label nameOfDirector;
-        private Label label5;
+        private Label percent;
         private FlowLayoutPanel flowLayoutPartners;
     }
 }

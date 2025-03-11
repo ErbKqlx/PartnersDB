@@ -1,15 +1,48 @@
+using Microsoft.EntityFrameworkCore;
+using PartnersDB.Models;
+using System.ComponentModel;
+
 namespace PartnersDB
 {
     public partial class FormPartners : Form
     {
+        private PartnersContext db;
+        private int count = 1;
         public FormPartners()
         {
             InitializeComponent();
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            db = new PartnersContext();
+            db.Partners.Load();
+
+            foreach (var partner in db.Partners)
+            {
+
+                CreatePanel(
+                    partner.IdTypeOfPartner,
+                    partner.Name,
+                    partner.NameOfDirector,
+                    partner.Phone,
+                    partner.Rating
+                );
+                
+            }
+
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+        }
+
         private void ButtonAddPartner_Click(object sender, EventArgs e)
         {
-
+            FormAdd formAdd = new FormAdd();
+            formAdd.ShowDialog(this);
         }
 
         private void Panel_MouseHover(object sender, EventArgs e)
@@ -22,6 +55,78 @@ namespace PartnersDB
         {
             var panel = sender as Panel;
             panel.BackColor = Color.White;
+        }
+
+        private void CreatePanel(short idType, string name, string director, string number, short? rate)
+        {
+            var panel = new Panel();
+            Label nameOfPartner = new();
+            Label nameOfDirector = new();
+            Label phone = new();
+            Label rating = new();
+            Label percent = new();
+
+            // 
+            // percent
+            // 
+            percent.Location = new Point(709, 15);
+            percent.Name = "percent";
+            percent.Size = new Size(49, 28);
+            percent.TabIndex = 4;
+            percent.Text = $"{rate}%";
+            // 
+            // rating
+            // 
+            rating.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            rating.Location = new Point(20, 93);
+            rating.Name = "rating";
+            rating.Size = new Size(278, 25);
+            rating.TabIndex = 3;
+            rating.Text = $"Рейтинг: {rate}";
+            // 
+            // phone
+            // 
+            phone.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            phone.Location = new Point(20, 68);
+            phone.Name = "phone";
+            phone.Size = new Size(278, 25);
+            phone.TabIndex = 2;
+            phone.Text = $"+7 {number}";
+            // 
+            // nameOfDirector
+            // 
+            nameOfDirector.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            nameOfDirector.Location = new Point(20, 43);
+            nameOfDirector.Name = "nameOfDirector";
+            nameOfDirector.Size = new Size(278, 25);
+            nameOfDirector.TabIndex = 1;
+            nameOfDirector.Text = director.ToString();
+            // 
+            // nameOfPartner
+            // 
+            nameOfPartner.Location = new Point(20, 15);
+            nameOfPartner.Name = "nameOfPartner";
+            nameOfPartner.Size = new Size(278, 28);
+            nameOfPartner.TabIndex = 0;
+            nameOfPartner.Text = $"Тип | {name}";
+
+            // 
+            // panel
+            // 
+            panel.BackColor = Color.White;
+            panel.BorderStyle = BorderStyle.FixedSingle;
+            panel.Controls.Add(percent);
+            panel.Controls.Add(rating);
+            panel.Controls.Add(phone);
+            panel.Controls.Add(nameOfDirector);
+            panel.Controls.Add(nameOfPartner);
+            panel.Name = "panel" + count;
+            panel.Size = new Size(833, 131);
+            panel.TabIndex = 1;
+            panel.MouseEnter += Panel_MouseHover;
+            panel.MouseLeave += Panel_MouseLeave;
+
+            flowLayoutPartners.Controls.Add(panel);
         }
     }
 }
