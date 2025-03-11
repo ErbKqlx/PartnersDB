@@ -28,31 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            flowLayoutButtons = new FlowLayoutPanel();
             buttonAddPartner = new Button();
             buttonUpdatePartner = new Button();
             buttonDeletePartner = new Button();
             panel1 = new Panel();
             label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
-            flowLayoutPanel1.SuspendLayout();
+            rating = new Label();
+            phone = new Label();
+            nameOfDirector = new Label();
+            nameOfPartner = new Label();
+            flowLayoutPartners = new FlowLayoutPanel();
+            flowLayoutButtons.SuspendLayout();
             panel1.SuspendLayout();
+            flowLayoutPartners.SuspendLayout();
             SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // flowLayoutButtons
             // 
-            flowLayoutPanel1.Controls.Add(buttonAddPartner);
-            flowLayoutPanel1.Controls.Add(buttonUpdatePartner);
-            flowLayoutPanel1.Controls.Add(buttonDeletePartner);
-            flowLayoutPanel1.Dock = DockStyle.Top;
-            flowLayoutPanel1.Location = new Point(10, 10);
-            flowLayoutPanel1.Margin = new Padding(5);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(841, 71);
-            flowLayoutPanel1.TabIndex = 0;
+            flowLayoutButtons.Controls.Add(buttonAddPartner);
+            flowLayoutButtons.Controls.Add(buttonUpdatePartner);
+            flowLayoutButtons.Controls.Add(buttonDeletePartner);
+            flowLayoutButtons.Dock = DockStyle.Top;
+            flowLayoutButtons.Location = new Point(10, 10);
+            flowLayoutButtons.Margin = new Padding(5);
+            flowLayoutButtons.Name = "flowLayoutButtons";
+            flowLayoutButtons.Size = new Size(841, 71);
+            flowLayoutButtons.TabIndex = 0;
             // 
             // buttonAddPartner
             // 
@@ -64,6 +66,7 @@
             buttonAddPartner.TabIndex = 0;
             buttonAddPartner.Text = "Добавить партнера";
             buttonAddPartner.UseVisualStyleBackColor = false;
+            buttonAddPartner.Click += ButtonAddPartner_Click;
             // 
             // buttonUpdatePartner
             // 
@@ -82,22 +85,26 @@
             buttonDeletePartner.Location = new Point(517, 5);
             buttonDeletePartner.Margin = new Padding(5);
             buttonDeletePartner.Name = "buttonDeletePartner";
-            buttonDeletePartner.Size = new Size(246, 58);
+            buttonDeletePartner.Size = new Size(319, 58);
             buttonDeletePartner.TabIndex = 2;
-            buttonDeletePartner.Text = "Удалить партнера";
+            buttonDeletePartner.Text = "Посмотреть истории реализации продукций партнером";
             buttonDeletePartner.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
+            panel1.BackColor = Color.White;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(label5);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(10, 89);
+            panel1.Controls.Add(rating);
+            panel1.Controls.Add(phone);
+            panel1.Controls.Add(nameOfDirector);
+            panel1.Controls.Add(nameOfPartner);
+            panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(841, 131);
+            panel1.Size = new Size(833, 131);
             panel1.TabIndex = 1;
+            panel1.MouseEnter += Panel_MouseHover;
+            panel1.MouseLeave += Panel_MouseLeave;
             // 
             // label5
             // 
@@ -107,70 +114,82 @@
             label5.TabIndex = 4;
             label5.Text = "10%";
             // 
-            // label4
+            // rating
             // 
-            label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label4.Location = new Point(20, 93);
-            label4.Name = "label4";
-            label4.Size = new Size(278, 25);
-            label4.TabIndex = 3;
-            label4.Text = "Рейтинг: 10";
+            rating.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            rating.Location = new Point(20, 93);
+            rating.Name = "rating";
+            rating.Size = new Size(278, 25);
+            rating.TabIndex = 3;
+            rating.Text = "Рейтинг: 10";
             // 
-            // label3
+            // phone
             // 
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label3.Location = new Point(20, 68);
-            label3.Name = "label3";
-            label3.Size = new Size(278, 25);
-            label3.TabIndex = 2;
-            label3.Text = "+7 223 322 22 32";
+            phone.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            phone.Location = new Point(20, 68);
+            phone.Name = "phone";
+            phone.Size = new Size(278, 25);
+            phone.TabIndex = 2;
+            phone.Text = "+7 223 322 22 32";
             // 
-            // label2
+            // nameOfDirector
             // 
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label2.Location = new Point(20, 43);
-            label2.Name = "label2";
-            label2.Size = new Size(278, 25);
-            label2.TabIndex = 1;
-            label2.Text = "Директор";
+            nameOfDirector.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            nameOfDirector.Location = new Point(20, 43);
+            nameOfDirector.Name = "nameOfDirector";
+            nameOfDirector.Size = new Size(278, 25);
+            nameOfDirector.TabIndex = 1;
+            nameOfDirector.Text = "Директор";
             // 
-            // label1
+            // nameOfPartner
             // 
-            label1.Location = new Point(20, 15);
-            label1.Name = "label1";
-            label1.Size = new Size(278, 28);
-            label1.TabIndex = 0;
-            label1.Text = "Тип | Наименование партнера";
+            nameOfPartner.Location = new Point(20, 15);
+            nameOfPartner.Name = "nameOfPartner";
+            nameOfPartner.Size = new Size(278, 28);
+            nameOfPartner.TabIndex = 0;
+            nameOfPartner.Text = "Тип | Наименование партнера";
             // 
-            // Form1
+            // flowLayoutPartners
+            // 
+            flowLayoutPartners.Controls.Add(panel1);
+            flowLayoutPartners.Dock = DockStyle.Fill;
+            flowLayoutPartners.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPartners.Location = new Point(10, 81);
+            flowLayoutPartners.Name = "flowLayoutPartners";
+            flowLayoutPartners.Size = new Size(841, 483);
+            flowLayoutPartners.TabIndex = 2;
+            // 
+            // FormPartners
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(861, 574);
-            Controls.Add(panel1);
-            Controls.Add(flowLayoutPanel1);
+            Controls.Add(flowLayoutPartners);
+            Controls.Add(flowLayoutButtons);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Margin = new Padding(5);
-            Name = "Form1";
+            Name = "FormPartners";
             Padding = new Padding(10);
             Text = "Партнеры";
-            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutButtons.ResumeLayout(false);
             panel1.ResumeLayout(false);
+            flowLayoutPartners.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flowLayoutButtons;
         private Button buttonAddPartner;
         private Button buttonUpdatePartner;
         private Button buttonDeletePartner;
         private Panel panel1;
-        private Label label1;
-        private Label label4;
-        private Label label3;
-        private Label label2;
+        private Label nameOfPartner;
+        private Label rating;
+        private Label phone;
+        private Label nameOfDirector;
         private Label label5;
+        private FlowLayoutPanel flowLayoutPartners;
     }
 }

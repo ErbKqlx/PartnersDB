@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace PartnersDB;
+namespace PartnersDB.Models;
 
 public partial class PartnersContext : DbContext
 {
