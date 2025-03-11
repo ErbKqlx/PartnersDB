@@ -16,6 +16,7 @@ namespace PartnersDB
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+
             db = new PartnersContext();
             db.Partners.Load();
             db.Products.Load();
@@ -24,7 +25,6 @@ namespace PartnersDB
             db.TypesOfProducts.Load();
 
             var partners = db.Partners.Local.OrderBy(p => p.Id).ToList();
-
             foreach (var partner in partners)
             {
 
@@ -43,12 +43,22 @@ namespace PartnersDB
         protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
+            db?.Dispose();
+            db = null;
         }
 
         private void ButtonAddPartner_Click(object sender, EventArgs e)
         {
             FormAdd formAdd = new FormAdd();
-            formAdd.ShowDialog(this);
+            DialogResult result = formAdd.ShowDialog(this);
+
+            formAdd.listBox1.DataSource = db.TypesOfPartners;
+
+            if (result == DialogResult.Cancel)
+                return;
+
+            
+
         }
 
         private void Panel_MouseDown(object sender, EventArgs e)
