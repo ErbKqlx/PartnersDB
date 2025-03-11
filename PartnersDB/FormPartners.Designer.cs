@@ -32,16 +32,8 @@
             buttonAddPartner = new Button();
             buttonUpdatePartner = new Button();
             buttonDeletePartner = new Button();
-            panel0 = new Panel();
-            percent = new Label();
-            rating = new Label();
-            phone = new Label();
-            nameOfDirector = new Label();
-            nameOfPartner = new Label();
             flowLayoutPartners = new FlowLayoutPanel();
             flowLayoutButtons.SuspendLayout();
-            panel0.SuspendLayout();
-            flowLayoutPartners.SuspendLayout();
             SuspendLayout();
             // 
             // flowLayoutButtons
@@ -63,7 +55,7 @@
             buttonAddPartner.Margin = new Padding(5);
             buttonAddPartner.Name = "buttonAddPartner";
             buttonAddPartner.Size = new Size(246, 58);
-            buttonAddPartner.TabIndex = 0;
+            buttonAddPartner.TabIndex = 2;
             buttonAddPartner.Text = "Добавить партнера";
             buttonAddPartner.UseVisualStyleBackColor = false;
             buttonAddPartner.Click += ButtonAddPartner_Click;
@@ -75,7 +67,7 @@
             buttonUpdatePartner.Margin = new Padding(5);
             buttonUpdatePartner.Name = "buttonUpdatePartner";
             buttonUpdatePartner.Size = new Size(246, 58);
-            buttonUpdatePartner.TabIndex = 1;
+            buttonUpdatePartner.TabIndex = 3;
             buttonUpdatePartner.Text = "Редактировать партнера";
             buttonUpdatePartner.UseVisualStyleBackColor = false;
             // 
@@ -86,78 +78,19 @@
             buttonDeletePartner.Margin = new Padding(5);
             buttonDeletePartner.Name = "buttonDeletePartner";
             buttonDeletePartner.Size = new Size(319, 58);
-            buttonDeletePartner.TabIndex = 2;
+            buttonDeletePartner.TabIndex = 4;
             buttonDeletePartner.Text = "Посмотреть истории реализации продукций партнером";
             buttonDeletePartner.UseVisualStyleBackColor = false;
             // 
-            // panel0
-            // 
-            panel0.BackColor = Color.White;
-            panel0.BorderStyle = BorderStyle.FixedSingle;
-            panel0.Controls.Add(percent);
-            panel0.Controls.Add(rating);
-            panel0.Controls.Add(phone);
-            panel0.Controls.Add(nameOfDirector);
-            panel0.Controls.Add(nameOfPartner);
-            panel0.Location = new Point(3, 3);
-            panel0.Name = "panel0";
-            panel0.Size = new Size(833, 131);
-            panel0.TabIndex = 1;
-            panel0.MouseEnter += Panel_MouseHover;
-            panel0.MouseLeave += Panel_MouseLeave;
-            // 
-            // percent
-            // 
-            percent.Location = new Point(709, 15);
-            percent.Name = "percent";
-            percent.Size = new Size(49, 28);
-            percent.TabIndex = 4;
-            percent.Text = "10%";
-            // 
-            // rating
-            // 
-            rating.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            rating.Location = new Point(20, 93);
-            rating.Name = "rating";
-            rating.Size = new Size(278, 25);
-            rating.TabIndex = 3;
-            rating.Text = "Рейтинг: 10";
-            // 
-            // phone
-            // 
-            phone.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            phone.Location = new Point(20, 68);
-            phone.Name = "phone";
-            phone.Size = new Size(278, 25);
-            phone.TabIndex = 2;
-            phone.Text = "+7 223 322 22 32";
-            // 
-            // nameOfDirector
-            // 
-            nameOfDirector.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            nameOfDirector.Location = new Point(20, 43);
-            nameOfDirector.Name = "nameOfDirector";
-            nameOfDirector.Size = new Size(278, 25);
-            nameOfDirector.TabIndex = 1;
-            nameOfDirector.Text = "Директор";
-            // 
-            // nameOfPartner
-            // 
-            nameOfPartner.Location = new Point(20, 15);
-            nameOfPartner.Name = "nameOfPartner";
-            nameOfPartner.Size = new Size(278, 28);
-            nameOfPartner.TabIndex = 0;
-            nameOfPartner.Text = "Тип | Наименование партнера";
-            // 
             // flowLayoutPartners
             // 
-            flowLayoutPartners.Controls.Add(panel0);
-            flowLayoutPartners.Dock = DockStyle.Fill;
+            flowLayoutPartners.AutoScroll = true;
             flowLayoutPartners.FlowDirection = FlowDirection.TopDown;
             flowLayoutPartners.Location = new Point(10, 81);
             flowLayoutPartners.Name = "flowLayoutPartners";
             flowLayoutPartners.Size = new Size(841, 483);
-            flowLayoutPartners.TabIndex = 2;
+            flowLayoutPartners.TabIndex = 1;
+            flowLayoutPartners.WrapContents = false;
             // 
             // FormPartners
             // 
@@ -173,8 +106,6 @@
             Padding = new Padding(10);
             Text = "Партнеры";
             flowLayoutButtons.ResumeLayout(false);
-            panel0.ResumeLayout(false);
-            flowLayoutPartners.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -184,12 +115,6 @@
         private Button buttonAddPartner;
         private Button buttonUpdatePartner;
         private Button buttonDeletePartner;
-        private Panel panel0;
-        private Label nameOfPartner;
-        private Label rating;
-        private Label phone;
-        private Label nameOfDirector;
-        private Label percent;
         private FlowLayoutPanel flowLayoutPartners;
     }
 }

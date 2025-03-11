@@ -18,12 +18,18 @@ namespace PartnersDB
             base.OnLoad(e);
             db = new PartnersContext();
             db.Partners.Load();
+            db.Products.Load();
+            db.PartnersProducts.Load();
+            db.TypesOfPartners.Load();
+            db.TypesOfProducts.Load();
 
-            foreach (var partner in db.Partners)
+            var partners = db.Partners.Local.OrderBy(p => p.Id).ToList();
+
+            foreach (var partner in partners)
             {
 
                 CreatePanel(
-                    partner.IdTypeOfPartner,
+                    db.TypesOfPartners.FirstOrDefault(t => t.Id == partner.IdTypeOfPartner).TypeOfPartner,
                     partner.Name,
                     partner.NameOfDirector,
                     partner.Phone,
@@ -45,19 +51,19 @@ namespace PartnersDB
             formAdd.ShowDialog(this);
         }
 
-        private void Panel_MouseHover(object sender, EventArgs e)
+        private void Panel_MouseDown(object sender, EventArgs e)
         {
             var panel = sender as Panel;
             panel.BackColor = Color.AliceBlue;
         }
 
-        private void Panel_MouseLeave(object sender, EventArgs e)
+        private void Panel_MouseUp(object sender, EventArgs e)
         {
             var panel = sender as Panel;
             panel.BackColor = Color.White;
         }
 
-        private void CreatePanel(short idType, string name, string director, string number, short? rate)
+        private void CreatePanel(string type, string name, string director, string number, short? rate)
         {
             var panel = new Panel();
             Label nameOfPartner = new();
@@ -73,7 +79,7 @@ namespace PartnersDB
             percent.Name = "percent";
             percent.Size = new Size(49, 28);
             percent.TabIndex = 4;
-            percent.Text = $"{rate}%";
+            percent.Text = "0%";
             // 
             // rating
             // 
@@ -108,7 +114,7 @@ namespace PartnersDB
             nameOfPartner.Name = "nameOfPartner";
             nameOfPartner.Size = new Size(278, 28);
             nameOfPartner.TabIndex = 0;
-            nameOfPartner.Text = $"“ËÔ | {name}";
+            nameOfPartner.Text = $"{type} | {name}";
 
             // 
             // panel
@@ -121,10 +127,9 @@ namespace PartnersDB
             panel.Controls.Add(nameOfDirector);
             panel.Controls.Add(nameOfPartner);
             panel.Name = "panel" + count;
-            panel.Size = new Size(833, 131);
+            panel.Size = new Size(815, 131);
             panel.TabIndex = 1;
-            panel.MouseEnter += Panel_MouseHover;
-            panel.MouseLeave += Panel_MouseLeave;
+            panel.MouseDown += Panel_MouseDown;
 
             flowLayoutPartners.Controls.Add(panel);
         }
