@@ -55,7 +55,34 @@ namespace PartnersDB
             if (result == DialogResult.Cancel)
                 return;
 
+            Partner partner = new()
+            {
+                //IdTypeOfPartner = db.TypesOfPartners
+                    //.FirstOrDefault(t => t.TypeOfPartner == formAdd.typeOfPartner.SelectedValue.ToString()).Id,
+                IdTypeOfPartner = (short)formAdd.typeOfPartner.SelectedValue,
+                Name = formAdd.name.Text,
+                LegalAdress = formAdd.legalAdress.Text,
+                Inn = formAdd.inn.Text,
+                NameOfDirector = formAdd.nameOfDirector.Text,
+                Phone = formAdd.phone.Text,
+                Email = formAdd.email.Text,
+                Rating = short.Parse(formAdd.rating.Text)
+            };
 
+            db.Partners.Add(partner);
+            db.SaveChanges();
+
+
+
+            CreatePanel(
+                    db.TypesOfPartners.FirstOrDefault(t => t.Id == partner.IdTypeOfPartner).TypeOfPartner,
+                    partner.Name,
+                    partner.NameOfDirector,
+                    partner.Phone,
+                    partner.Rating
+            );
+
+            MessageBox.Show("Партнер добавлен");
         }
 
         private void ButtonUpdatePartner_Click(object sender, EventArgs e)
@@ -80,6 +107,7 @@ namespace PartnersDB
             var panel = sender as Panel;
             panel.BackColor = Color.White;
         }
+
 
         private void CreatePanel(string type, string name, string director, string number, short? rate)
         {
@@ -150,5 +178,6 @@ namespace PartnersDB
 
             flowLayoutPartners.Controls.Add(panel);
         }
+
     }
 }

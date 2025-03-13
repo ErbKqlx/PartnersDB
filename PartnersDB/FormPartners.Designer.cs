@@ -86,7 +86,7 @@
             // flowLayoutPartners
             // 
             flowLayoutPartners.AutoScroll = true;
-            flowLayoutPartners.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPartners.FlowDirection = FlowDirection.BottomUp;
             flowLayoutPartners.Location = new Point(10, 81);
             flowLayoutPartners.Name = "flowLayoutPartners";
             flowLayoutPartners.Size = new Size(841, 483);

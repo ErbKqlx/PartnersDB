@@ -39,14 +39,14 @@
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            comboBox1 = new ComboBox();
+            name = new TextBox();
+            nameOfDirector = new TextBox();
+            inn = new TextBox();
+            legalAdress = new TextBox();
+            phone = new TextBox();
+            email = new TextBox();
+            rating = new TextBox();
+            typeOfPartner = new ComboBox();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -147,77 +147,77 @@
             label8.TabIndex = 8;
             label8.Text = "Рейтинг:";
             // 
-            // textBox1
+            // name
             // 
-            textBox1.Font = new Font("Segoe UI", 12F);
-            textBox1.Location = new Point(193, 48);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(260, 27);
-            textBox1.TabIndex = 9;
+            name.Font = new Font("Segoe UI", 12F);
+            name.Location = new Point(193, 48);
+            name.Multiline = true;
+            name.Name = "name";
+            name.Size = new Size(260, 27);
+            name.TabIndex = 9;
             // 
-            // textBox2
+            // nameOfDirector
             // 
-            textBox2.Font = new Font("Segoe UI", 12F);
-            textBox2.Location = new Point(193, 139);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(260, 27);
-            textBox2.TabIndex = 10;
+            nameOfDirector.Font = new Font("Segoe UI", 12F);
+            nameOfDirector.Location = new Point(193, 139);
+            nameOfDirector.Multiline = true;
+            nameOfDirector.Name = "nameOfDirector";
+            nameOfDirector.Size = new Size(260, 27);
+            nameOfDirector.TabIndex = 10;
             // 
-            // textBox3
+            // inn
             // 
-            textBox3.Font = new Font("Segoe UI", 12F);
-            textBox3.Location = new Point(193, 109);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(260, 27);
-            textBox3.TabIndex = 11;
+            inn.Font = new Font("Segoe UI", 12F);
+            inn.Location = new Point(193, 109);
+            inn.Multiline = true;
+            inn.Name = "inn";
+            inn.Size = new Size(260, 27);
+            inn.TabIndex = 11;
             // 
-            // textBox4
+            // legalAdress
             // 
-            textBox4.Font = new Font("Segoe UI", 12F);
-            textBox4.Location = new Point(193, 79);
-            textBox4.Multiline = true;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(260, 27);
-            textBox4.TabIndex = 12;
+            legalAdress.Font = new Font("Segoe UI", 12F);
+            legalAdress.Location = new Point(193, 79);
+            legalAdress.Multiline = true;
+            legalAdress.Name = "legalAdress";
+            legalAdress.Size = new Size(260, 27);
+            legalAdress.TabIndex = 12;
             // 
-            // textBox5
+            // phone
             // 
-            textBox5.Font = new Font("Segoe UI", 12F);
-            textBox5.Location = new Point(193, 169);
-            textBox5.Multiline = true;
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(260, 27);
-            textBox5.TabIndex = 13;
+            phone.Font = new Font("Segoe UI", 12F);
+            phone.Location = new Point(193, 169);
+            phone.Multiline = true;
+            phone.Name = "phone";
+            phone.Size = new Size(260, 27);
+            phone.TabIndex = 13;
             // 
-            // textBox6
+            // email
             // 
-            textBox6.Font = new Font("Segoe UI", 12F);
-            textBox6.Location = new Point(193, 199);
-            textBox6.Multiline = true;
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(260, 27);
-            textBox6.TabIndex = 14;
+            email.Font = new Font("Segoe UI", 12F);
+            email.Location = new Point(193, 199);
+            email.Multiline = true;
+            email.Name = "email";
+            email.Size = new Size(260, 27);
+            email.TabIndex = 14;
             // 
-            // textBox7
+            // rating
             // 
-            textBox7.Font = new Font("Segoe UI", 12F);
-            textBox7.Location = new Point(193, 228);
-            textBox7.Multiline = true;
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(260, 27);
-            textBox7.TabIndex = 15;
+            rating.Font = new Font("Segoe UI", 12F);
+            rating.Location = new Point(193, 228);
+            rating.Multiline = true;
+            rating.Name = "rating";
+            rating.Size = new Size(260, 27);
+            rating.TabIndex = 15;
             // 
-            // comboBox1
+            // typeOfPartner
             // 
-            comboBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(193, 13);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(260, 29);
-            comboBox1.TabIndex = 17;
+            typeOfPartner.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            typeOfPartner.FormattingEnabled = true;
+            typeOfPartner.Location = new Point(193, 13);
+            typeOfPartner.Name = "typeOfPartner";
+            typeOfPartner.Size = new Size(260, 29);
+            typeOfPartner.TabIndex = 17;
             // 
             // FormAdd
             // 
@@ -225,14 +225,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(539, 342);
-            Controls.Add(comboBox1);
-            Controls.Add(textBox7);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(typeOfPartner);
+            Controls.Add(rating);
+            Controls.Add(email);
+            Controls.Add(phone);
+            Controls.Add(legalAdress);
+            Controls.Add(inn);
+            Controls.Add(nameOfDirector);
+            Controls.Add(name);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -264,13 +264,13 @@
         private Label label6;
         private Label label7;
         private Label label8;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private TextBox textBox7;
-        private ComboBox comboBox1;
+        public TextBox name;
+        public TextBox nameOfDirector;
+        public TextBox inn;
+        public TextBox legalAdress;
+        public TextBox phone;
+        public TextBox email;
+        public TextBox rating;
+        public ComboBox typeOfPartner;
     }
 }

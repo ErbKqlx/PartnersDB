@@ -20,9 +20,9 @@ namespace PartnersDB
         {
             InitializeComponent();
 
-            comboBox1.DataSource = typesOfPartners.Local.ToBindingList();
-            //comboBox1.DisplayMember = "TypesOfPartner";
-            comboBox1.ValueMember = "TypeOfPartner";
+            typeOfPartner.DataSource = typesOfPartners.Local.ToBindingList();
+            typeOfPartner.DisplayMember = "TypeOfPartner";
+            typeOfPartner.ValueMember = "Id";
         }
     }
 }
