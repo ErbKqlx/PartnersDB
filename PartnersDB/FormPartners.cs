@@ -8,6 +8,8 @@ namespace PartnersDB
     public partial class FormPartners : Form
     {
         private PartnersContext db;
+        private short id;
+        private Panel selectedPanel;
         public FormPartners()
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace PartnersDB
             {
 
                 CreatePanel(
+                    partner.Id,
                     db.TypesOfPartners.FirstOrDefault(t => t.Id == partner.IdTypeOfPartner).TypeOfPartner,
                     partner.Name,
                     partner.NameOfDirector,
@@ -75,11 +78,12 @@ namespace PartnersDB
 
 
             CreatePanel(
-                    db.TypesOfPartners.FirstOrDefault(t => t.Id == partner.IdTypeOfPartner).TypeOfPartner,
-                    partner.Name,
-                    partner.NameOfDirector,
-                    partner.Phone,
-                    partner.Rating
+                partner.Id,
+                db.TypesOfPartners.FirstOrDefault(t => t.Id == partner.IdTypeOfPartner).TypeOfPartner,
+                partner.Name,
+                partner.NameOfDirector,
+                partner.Phone,
+                partner.Rating
             );
 
             MessageBox.Show("Партнер добавлен");
@@ -87,19 +91,39 @@ namespace PartnersDB
 
         private void ButtonUpdatePartner_Click(object sender, EventArgs e)
         {
+            var partner = db.Partners.Find(id);
+
             FormAdd formAdd = new FormAdd(db.TypesOfPartners);
+
+            formAdd.name.Text = partner.Name;
+            formAdd.legalAdress.Text = partner.LegalAdress;
+            formAdd.inn.Text = partner.Inn;
+            formAdd.nameOfDirector.Text = partner.NameOfDirector;
+            formAdd.phone.Text = partner.Phone;
+            formAdd.email.Text = partner.Email;
+            formAdd.rating.Text = partner.Rating.ToString();
+
             DialogResult result = formAdd.ShowDialog(this);
 
             if (result == DialogResult.Cancel)
                 return;
 
+            //formAdd.typeOfPartner.SelectedIndex = partner.IdTypeOfPartner;
+            
 
         }
 
         private void Panel_MouseDown(object sender, EventArgs e)
         {
             var panel = sender as Panel;
+            id = short.Parse(panel.Name.Split("_")[1]);
             panel.BackColor = Color.AliceBlue;
+
+            if (panel != selectedPanel && selectedPanel != null)
+            {
+                selectedPanel.BackColor = Color.White;
+            }
+            selectedPanel = panel;
         }
 
         private void Panel_MouseUp(object sender, EventArgs e)
@@ -108,8 +132,7 @@ namespace PartnersDB
             panel.BackColor = Color.White;
         }
 
-
-        private void CreatePanel(string type, string name, string director, string number, short? rate)
+        private void CreatePanel(short id, string type, string name, string director, string number, short? rate)
         {
             var panel = new Panel();
             Label nameOfPartner = new();
@@ -172,6 +195,7 @@ namespace PartnersDB
             panel.Controls.Add(phone);
             panel.Controls.Add(nameOfDirector);
             panel.Controls.Add(nameOfPartner);
+            panel.Name = $"panel_{id}";
             panel.Size = new Size(815, 131);
             panel.TabIndex = 1;
             panel.MouseDown += Panel_MouseDown;
