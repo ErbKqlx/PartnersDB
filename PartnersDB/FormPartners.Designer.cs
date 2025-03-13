@@ -70,6 +70,7 @@
             buttonUpdatePartner.TabIndex = 3;
             buttonUpdatePartner.Text = "Редактировать партнера";
             buttonUpdatePartner.UseVisualStyleBackColor = false;
+            buttonUpdatePartner.Click += ButtonUpdatePartner_Click;
             // 
             // buttonDeletePartner
             // 

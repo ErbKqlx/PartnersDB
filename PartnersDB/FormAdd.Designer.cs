@@ -46,7 +46,7 @@
             textBox5 = new TextBox();
             textBox6 = new TextBox();
             textBox7 = new TextBox();
-            listBox1 = new ListBox();
+            comboBox1 = new ComboBox();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -210,15 +210,14 @@
             textBox7.Size = new Size(260, 27);
             textBox7.TabIndex = 15;
             // 
-            // listBox1
+            // comboBox1
             // 
-            listBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 21;
-            listBox1.Location = new Point(193, 19);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(260, 25);
-            listBox1.TabIndex = 16;
+            comboBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(193, 13);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(260, 29);
+            comboBox1.TabIndex = 17;
             // 
             // FormAdd
             // 
@@ -226,7 +225,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(539, 342);
-            Controls.Add(listBox1);
+            Controls.Add(comboBox1);
             Controls.Add(textBox7);
             Controls.Add(textBox6);
             Controls.Add(textBox5);
@@ -272,6 +271,6 @@
         private TextBox textBox5;
         private TextBox textBox6;
         private TextBox textBox7;
-        public ListBox listBox1;
+        private ComboBox comboBox1;
     }
 }

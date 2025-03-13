@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using PartnersDB.Models;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace PartnersDB
 {
     public partial class FormPartners : Form
     {
         private PartnersContext db;
-        private int count = 1;
         public FormPartners()
         {
             InitializeComponent();
@@ -49,15 +49,23 @@ namespace PartnersDB
 
         private void ButtonAddPartner_Click(object sender, EventArgs e)
         {
-            FormAdd formAdd = new FormAdd();
+            FormAdd formAdd = new FormAdd(db.TypesOfPartners);
             DialogResult result = formAdd.ShowDialog(this);
-
-            formAdd.listBox1.DataSource = db.TypesOfPartners;
 
             if (result == DialogResult.Cancel)
                 return;
 
-            
+
+        }
+
+        private void ButtonUpdatePartner_Click(object sender, EventArgs e)
+        {
+            FormAdd formAdd = new FormAdd(db.TypesOfPartners);
+            DialogResult result = formAdd.ShowDialog(this);
+
+            if (result == DialogResult.Cancel)
+                return;
+
 
         }
 
@@ -136,7 +144,6 @@ namespace PartnersDB
             panel.Controls.Add(phone);
             panel.Controls.Add(nameOfDirector);
             panel.Controls.Add(nameOfPartner);
-            panel.Name = "panel" + count;
             panel.Size = new Size(815, 131);
             panel.TabIndex = 1;
             panel.MouseDown += Panel_MouseDown;
