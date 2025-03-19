@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PartnersDB.Models;
+using System.ComponentModel;
 
 namespace PartnersDB
 {
@@ -16,18 +17,23 @@ namespace PartnersDB
             typeOfPartner.DisplayMember = "TypeOfPartner";
             typeOfPartner.ValueMember = "Id";
 
-            if (name.Text == null 
-                || legalAdress.Text == null
-                || inn.Text == null
-                || nameOfDirector == null
-                || phone == null
-                || email == null
-                || rating == null)
-            {
-                MessageBox.Show(msgEmpty);
-                buttonSave.Enabled = false;
-            }
+
+
             //else if (!inn.TryParse())
+        }
+
+        private void ButtonSave_Click(object sender, EventArgs e)
+        {
+            if (name.Text == ""
+                || legalAdress.Text == ""
+                || inn.Text == ""
+                || nameOfDirector.Text == ""
+                || phone.Text == ""
+                || email.Text == ""
+                || rating.Text == "")
+            {
+                
+            }
         }
     }
 }
