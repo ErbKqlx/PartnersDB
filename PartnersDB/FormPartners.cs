@@ -95,6 +95,7 @@ namespace PartnersDB
 
             FormAdd formAdd = new FormAdd(db.TypesOfPartners);
 
+            formAdd.typeOfPartner.SelectedIndex = partner.IdTypeOfPartner-1;
             formAdd.name.Text = partner.Name;
             formAdd.legalAdress.Text = partner.LegalAdress;
             formAdd.inn.Text = partner.Inn;
@@ -108,8 +109,17 @@ namespace PartnersDB
             if (result == DialogResult.Cancel)
                 return;
 
-            //formAdd.typeOfPartner.SelectedIndex = partner.IdTypeOfPartner;
-            
+            partner.IdTypeOfPartner = (short)formAdd.typeOfPartner.SelectedValue;
+            partner.Name = formAdd.name.Text;
+            partner.LegalAdress = formAdd.legalAdress.Text;
+            partner.Inn = formAdd.inn.Text;
+            partner.NameOfDirector = formAdd.nameOfDirector.Text;
+            partner.Phone = formAdd.phone.Text;
+            partner.Email = formAdd.email.Text;
+            partner.Rating = short.Parse(formAdd.rating.Text);
+
+            db.SaveChanges();
+
 
         }
 
