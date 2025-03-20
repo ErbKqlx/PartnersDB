@@ -9,7 +9,7 @@ namespace PartnersDB
     {
         private PartnersContext db;
         private short id;
-        private Panel selectedPanel;
+        private Panel? selectedPanel;
         public FormPartners()
         {
             InitializeComponent();
@@ -38,7 +38,7 @@ namespace PartnersDB
                     partner.Phone,
                     partner.Rating
                 );
-                
+
             }
 
         }
@@ -71,12 +71,12 @@ namespace PartnersDB
 
             if (short.TryParse(formAdd.rating.Text, out short rate))
             {
-                if (rate > 10) 
-                { 
+                if (rate > 10)
+                {
                     partner.Rating = 10;
                 }
-                else if (rate < 0) 
-                { 
+                else if (rate < 0)
+                {
                     partner.Rating = 1;
                 }
                 else
@@ -125,7 +125,7 @@ namespace PartnersDB
 
             FormAdd formAdd = new FormAdd(db.TypesOfPartners);
 
-            formAdd.typeOfPartner.SelectedIndex = partner.IdTypeOfPartner-1;
+            formAdd.typeOfPartner.SelectedIndex = partner.IdTypeOfPartner - 1;
             formAdd.name.Text = partner.Name;
             formAdd.legalAdress.Text = partner.LegalAdress;
             formAdd.inn.Text = partner.Inn;
@@ -179,6 +179,17 @@ namespace PartnersDB
 
 
             db.SaveChanges();
+
+            DeletePanel(selectedPanel);
+
+            CreatePanel(
+                partner.Id,
+                db.TypesOfPartners.FirstOrDefault(t => t.Id == partner.IdTypeOfPartner).TypeOfPartner,
+                partner.Name,
+                partner.NameOfDirector,
+                partner.Phone,
+                partner.Rating
+            );
 
             MessageBox.Show("Партнер обновлен");
 
@@ -274,5 +285,10 @@ namespace PartnersDB
             flowLayoutPartners.Controls.Add(panel);
         }
 
+        private void DeletePanel(Panel panel)
+        {
+            flowLayoutPartners.Controls.Remove(panel);
+            selectedPanel = null;
+        }
     }
 }
