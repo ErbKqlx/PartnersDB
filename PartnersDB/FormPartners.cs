@@ -91,6 +91,9 @@ namespace PartnersDB
 
         private void ButtonUpdatePartner_Click(object sender, EventArgs e)
         {
+            if (selectedPanel == null)
+                return;
+
             var partner = db.Partners.Find(id);
 
             FormAdd formAdd = new FormAdd(db.TypesOfPartners);

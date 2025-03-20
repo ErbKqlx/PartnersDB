@@ -71,7 +71,6 @@
             buttonSave.TabIndex = 0;
             buttonSave.Text = "Сохранить";
             buttonSave.UseVisualStyleBackColor = false;
-            buttonSave.Click += ButtonSave_Click;
             // 
             // buttonCancel
             // 
@@ -156,6 +155,7 @@
             name.Name = "name";
             name.Size = new Size(260, 27);
             name.TabIndex = 9;
+            name.TextChanged += TextBox_TextChanged;
             // 
             // nameOfDirector
             // 
@@ -165,6 +165,7 @@
             nameOfDirector.Name = "nameOfDirector";
             nameOfDirector.Size = new Size(260, 27);
             nameOfDirector.TabIndex = 10;
+            nameOfDirector.TextChanged += TextBox_TextChanged;
             // 
             // inn
             // 
@@ -174,6 +175,7 @@
             inn.Name = "inn";
             inn.Size = new Size(260, 27);
             inn.TabIndex = 11;
+            inn.TextChanged += TextBox_TextChanged;
             // 
             // legalAdress
             // 
@@ -183,6 +185,7 @@
             legalAdress.Name = "legalAdress";
             legalAdress.Size = new Size(260, 27);
             legalAdress.TabIndex = 12;
+            legalAdress.TextChanged += TextBox_TextChanged;
             // 
             // phone
             // 
@@ -192,6 +195,7 @@
             phone.Name = "phone";
             phone.Size = new Size(260, 27);
             phone.TabIndex = 13;
+            phone.TextChanged += TextBox_TextChanged;
             // 
             // email
             // 
@@ -201,6 +205,7 @@
             email.Name = "email";
             email.Size = new Size(260, 27);
             email.TabIndex = 14;
+            email.TextChanged += TextBox_TextChanged;
             // 
             // rating
             // 
@@ -210,6 +215,7 @@
             rating.Name = "rating";
             rating.Size = new Size(260, 27);
             rating.TabIndex = 15;
+            rating.TextChanged += TextBox_TextChanged;
             // 
             // typeOfPartner
             // 
