@@ -6,21 +6,20 @@ namespace PartnersDB
 {
     public partial class FormAdd : Form
     {
-        private const string msgEmpty = "Поля не могут быть пустыми";
-        private const string convertError = "Не удалось преобразовать строку в число";
+        //private const string msgEmpty = "Поля не могут быть пустыми";
+        //private const string convertError = "Не удалось преобразовать строку в число";
 
 
         public FormAdd(DbSet<TypesOfPartner> typesOfPartners)
         {
             InitializeComponent();
-
-            if (IsEmpty())
+            if (!IsEmpty())
             {
-                buttonSave.Enabled = false;
+                buttonSave.Enabled = true;
             }
             else
             {
-                buttonSave.Enabled = true;
+                buttonSave.Enabled = false;
             }
 
             typeOfPartner.DataSource = typesOfPartners.Local.ToBindingList();
@@ -47,8 +46,7 @@ namespace PartnersDB
                 || inn.Text == ""
                 || nameOfDirector.Text == ""
                 || phone.Text == ""
-                || email.Text == ""
-                || rating.Text == "")
+                || email.Text == "")
             {
                 return true;
             }

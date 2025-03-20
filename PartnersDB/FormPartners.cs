@@ -58,19 +58,46 @@ namespace PartnersDB
             if (result == DialogResult.Cancel)
                 return;
 
-            Partner partner = new()
+            Partner partner = new();
+            //IdTypeOfPartner = db.TypesOfPartners
+            //.FirstOrDefault(t => t.TypeOfPartner == formAdd.typeOfPartner.SelectedValue.ToString()).Id,
+            partner.IdTypeOfPartner = (short)formAdd.typeOfPartner.SelectedValue;
+            partner.Name = formAdd.name.Text;
+            partner.LegalAdress = formAdd.legalAdress.Text;
+            partner.Inn = formAdd.inn.Text;
+            partner.NameOfDirector = formAdd.nameOfDirector.Text;
+            partner.Phone = formAdd.phone.Text;
+            partner.Email = formAdd.email.Text;
+
+            if (short.TryParse(formAdd.rating.Text, out short rate))
             {
-                //IdTypeOfPartner = db.TypesOfPartners
-                    //.FirstOrDefault(t => t.TypeOfPartner == formAdd.typeOfPartner.SelectedValue.ToString()).Id,
-                IdTypeOfPartner = (short)formAdd.typeOfPartner.SelectedValue,
-                Name = formAdd.name.Text,
-                LegalAdress = formAdd.legalAdress.Text,
-                Inn = formAdd.inn.Text,
-                NameOfDirector = formAdd.nameOfDirector.Text,
-                Phone = formAdd.phone.Text,
-                Email = formAdd.email.Text,
-                Rating = short.Parse(formAdd.rating.Text)
-            };
+                if (rate > 10) 
+                { 
+                    partner.Rating = 10;
+                }
+                else if (rate < 0) 
+                { 
+                    partner.Rating = 1;
+                }
+                else
+                {
+                    partner.Rating = rate;
+                }
+            }
+            else if (formAdd.rating.Text == "")
+            {
+                partner.Rating = 1;
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Не удалось преобразовать строку в число",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
 
             db.Partners.Add(partner);
             db.SaveChanges();
@@ -119,10 +146,41 @@ namespace PartnersDB
             partner.NameOfDirector = formAdd.nameOfDirector.Text;
             partner.Phone = formAdd.phone.Text;
             partner.Email = formAdd.email.Text;
-            partner.Rating = short.Parse(formAdd.rating.Text);
+
+            if (short.TryParse(formAdd.rating.Text, out short rate))
+            {
+                if (rate > 10)
+                {
+                    partner.Rating = 10;
+                }
+                else if (rate < 0)
+                {
+                    partner.Rating = 1;
+                }
+                else
+                {
+                    partner.Rating = rate;
+                }
+            }
+            else if (formAdd.rating.Text == "")
+            {
+                partner.Rating = 1;
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Не удалось преобразовать строку в число",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
+
 
             db.SaveChanges();
 
+            MessageBox.Show("Партнер обновлен");
 
         }
 
