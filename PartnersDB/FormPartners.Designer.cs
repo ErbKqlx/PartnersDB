@@ -31,7 +31,7 @@
             flowLayoutButtons = new FlowLayoutPanel();
             buttonAddPartner = new Button();
             buttonUpdatePartner = new Button();
-            buttonDeletePartner = new Button();
+            ButtonCheckHistory = new Button();
             flowLayoutPartners = new FlowLayoutPanel();
             flowLayoutButtons.SuspendLayout();
             SuspendLayout();
@@ -40,7 +40,7 @@
             // 
             flowLayoutButtons.Controls.Add(buttonAddPartner);
             flowLayoutButtons.Controls.Add(buttonUpdatePartner);
-            flowLayoutButtons.Controls.Add(buttonDeletePartner);
+            flowLayoutButtons.Controls.Add(ButtonCheckHistory);
             flowLayoutButtons.Dock = DockStyle.Top;
             flowLayoutButtons.Location = new Point(10, 10);
             flowLayoutButtons.Margin = new Padding(5);
@@ -72,16 +72,17 @@
             buttonUpdatePartner.UseVisualStyleBackColor = false;
             buttonUpdatePartner.Click += ButtonUpdatePartner_Click;
             // 
-            // buttonDeletePartner
+            // ButtonCheckHistory
             // 
-            buttonDeletePartner.BackColor = Color.White;
-            buttonDeletePartner.Location = new Point(517, 5);
-            buttonDeletePartner.Margin = new Padding(5);
-            buttonDeletePartner.Name = "buttonDeletePartner";
-            buttonDeletePartner.Size = new Size(319, 58);
-            buttonDeletePartner.TabIndex = 4;
-            buttonDeletePartner.Text = "Посмотреть истории реализации продукций партнером";
-            buttonDeletePartner.UseVisualStyleBackColor = false;
+            ButtonCheckHistory.BackColor = Color.White;
+            ButtonCheckHistory.Location = new Point(517, 5);
+            ButtonCheckHistory.Margin = new Padding(5);
+            ButtonCheckHistory.Name = "ButtonCheckHistory";
+            ButtonCheckHistory.Size = new Size(319, 58);
+            ButtonCheckHistory.TabIndex = 4;
+            ButtonCheckHistory.Text = "Посмотреть истории реализации продукций партнером";
+            ButtonCheckHistory.UseVisualStyleBackColor = false;
+            ButtonCheckHistory.Click += ButtonCheckHistory_Click;
             // 
             // flowLayoutPartners
             // 
@@ -115,7 +116,7 @@
         private FlowLayoutPanel flowLayoutButtons;
         private Button buttonAddPartner;
         private Button buttonUpdatePartner;
-        private Button buttonDeletePartner;
+        private Button ButtonCheckHistory;
         private FlowLayoutPanel flowLayoutPartners;
     }
 }

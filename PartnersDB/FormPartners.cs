@@ -111,6 +111,8 @@ namespace PartnersDB
                 partner.NameOfDirector,
                 partner.Phone,
                 partner.Rating
+                
+                //db.PartnersProducts.Select
             );
 
             MessageBox.Show("Партнер добавлен");
@@ -289,6 +291,15 @@ namespace PartnersDB
         {
             flowLayoutPartners.Controls.Remove(panel);
             selectedPanel = null;
+        }
+
+        private void ButtonCheckHistory_Click(object sender, EventArgs e)
+        {
+            if (selectedPanel == null)
+                return;
+
+            var form = new FormPartnersProducts(id);
+            form.Show();
         }
     }
 }
