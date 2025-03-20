@@ -103,6 +103,18 @@ namespace PartnersDB
             db.SaveChanges();
 
 
+            int sum = db.PartnersProducts
+                .Include(i => i.IdProductNavigation)
+                .Select(i => new { i.Count, i.IdPartner })
+                .Where(i => i.IdPartner == id)
+                .Sum(i => i.Count);
+
+            string percent;
+
+            if (sum < 10000) { percent = "0%"; }
+            else if (sum < 50000) { percent = "5%"; }
+            else if (sum < 300000) { percent = "10%"; }
+            else { percent = "15%"; }
 
             CreatePanel(
                 partner.Id,
@@ -111,8 +123,6 @@ namespace PartnersDB
                 partner.NameOfDirector,
                 partner.Phone,
                 partner.Rating
-                
-                //db.PartnersProducts.Select
             );
 
             MessageBox.Show("Партнер добавлен");
@@ -191,6 +201,7 @@ namespace PartnersDB
                 partner.NameOfDirector,
                 partner.Phone,
                 partner.Rating
+
             );
 
             MessageBox.Show("Партнер обновлен");
@@ -232,7 +243,21 @@ namespace PartnersDB
             percent.Name = "percent";
             percent.Size = new Size(49, 28);
             percent.TabIndex = 4;
-            percent.Text = "0%";
+
+            int sum = db.PartnersProducts
+                .Include(i => i.IdProductNavigation)
+                .Select(i => new { i.Count, i.IdPartner })
+                .Where(i => i.IdPartner == id)
+                .Sum(i => i.Count);
+
+            string perc;
+
+            if (sum < 10000) { perc = "0%"; }
+            else if (sum < 50000) { perc = "5%"; }
+            else if (sum < 300000) { perc = "10%"; }
+            else { perc = "15%"; }
+
+            percent.Text = perc;
             // 
             // rating
             // 
